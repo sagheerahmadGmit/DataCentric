@@ -20,11 +20,10 @@
       <br/>
        <h:message for="name" class="error"/>
       <br/>
-      
       Founded: <h:inputText id="founded" value="#{store.founded}" p:placeholder="Enter Founded Date" required="true" requiredMessage="Error: Founded Date is Mandatory"/>
    	  <br/>
    	  <h:message for="founded" class="error"/>
-   	  
+   	  <br/>
 	  <h:commandButton value="Add" action="#{storeController.addStore(store)}"/>
    </h:form>
   </h:body>

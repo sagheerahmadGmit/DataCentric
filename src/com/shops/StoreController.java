@@ -63,7 +63,7 @@ public class StoreController {
 			dao.addStore(store); 
 		} catch(SQLIntegrityConstraintViolationException e) {
 			System.out.println("Already Exists!");
-			FacesMessage message = new FacesMessage("Error: StoreId already exists!");
+			FacesMessage message = new FacesMessage("Error: Store already exists!");
 			FacesContext.getCurrentInstance().addMessage(null, message); return null; 
 		}catch (CommunicationsException e){ 
 			FacesMessage message = new FacesMessage("Error: Database Offline!");

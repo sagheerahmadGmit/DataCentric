@@ -1,7 +1,12 @@
 package com.shops;
 
+import java.util.ArrayList;
+
 import org.bson.Document;
+
+import com.google.gson.Gson;
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -23,4 +28,21 @@ public class MongoDAO {
 		database = mongoClient.getDatabase(mongoDB);
 		collection = database.getCollection(mongoCollection);
 	}
+	
+	public ArrayList<HeadOffices> loadOffices() throws Exception{
+
+		ArrayList<HeadOffices> headList = new ArrayList<HeadOffices>();
+		FindIterable<Document> offices = collection.find();
+
+		for(Document docs:offices){
+			HeadOffices o = new HeadOffices();
+			o.setStoreId((int)(docs.get("_id")));
+			o.setLocation((String)docs.get("location"));
+			
+			headList.add(o);
+		}		
+		mongoClient.close();
+		return headList;
+	}
+	
 }
