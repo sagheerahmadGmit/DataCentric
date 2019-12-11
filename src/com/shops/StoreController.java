@@ -73,7 +73,7 @@ public class StoreController {
 			e.printStackTrace(); 
 		}
 
-		return "index";
+		return "list_stores";
 	}
 
 	public void delete(int sid, String sName) {

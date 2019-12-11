@@ -41,8 +41,16 @@ public class MongoDAO {
 			
 			headList.add(o);
 		}		
-		mongoClient.close();
+		//mongoClient.close();
 		return headList;
+	}
+	
+	public void addOffices(HeadOffices headOffice) {
+		Document doc = new Document(); // the document that will be added.
+		doc.append("_id", headOffice.getStoreId());
+		doc.append("location", headOffice.getLocation());
+		collection.insertOne(doc);
+
 	}
 	
 }
