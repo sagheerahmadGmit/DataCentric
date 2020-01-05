@@ -12,20 +12,22 @@
       listener="#{storeController.loadStores()}"/>
   </f:metadata>
   
+  <!-- Import the css classes -->
   <h:outputStylesheet library="css" name="tables.css"/>
   <h:outputStylesheet library="css" name="styles.css"/>
   
   <h:body>
   	<h3>Manage Stores</h3>
   	
+  	<!-- Message for error handling -->
   	<h:messages globalOnly="true" class="error"/>
   	
   	<h:form>
-  	
+  		<!-- Button to add a store to the database -->
   		<h:commandButton value="Add Store" action="add_store" class="addbutton"/>
   		
   		<br/>
-  	
+  	  	<!-- Print out a table and use css to format it and print out the following details -->
 	  	<h:dataTable value="#{storeController.stores}" var="s"
 	  	 headerClass="table-header"
 	  	 class="labelId"
@@ -48,12 +50,15 @@
 		
 		<h:column>
 	 	  <f:facet name="header">Action</f:facet>
+	 	  <!-- Show products depending on the store id -->
 	 	  <h:commandLink value="Show Products " action="#{storeProductController.loadStoreProduct(s.storeId)}"/>
+	 	  <!-- Delete a store depending on store id -->
 	 	  <h:commandLink value="Delete" action="#{storeController.delete(s.storeId, s.name)}"/>
 	 	</h:column>
 		
 		</h:dataTable>
 		
+		<!-- Go back to home page -->
 		<h:commandLink value="Home Page" action="index"/>
 		
   	</h:form>

@@ -1,12 +1,18 @@
 package com.shops;
 
-public class Product {
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+@ManagedBean @SessionScoped
+public class Product {
+	
+	//variables
 	int prodId;
 	int storeId;
 	String prodName;
 	double price;
 	
+	//Generate getters and setters
 	public int getProdId() {
 		return prodId;
 	}

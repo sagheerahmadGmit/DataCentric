@@ -1,5 +1,6 @@
 package com.shops;
 
+//imports
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,20 +29,24 @@ public class DAO {
 		mysqlDS = (DataSource) context.lookup(jndiName);
 	}
 
+	//ArrayList to store the stores
 	public ArrayList<Store> loadStores() throws Exception {
 
 		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
 
+		
 		myConn = mysqlDS.getConnection();
-
+		
+		//query to output everything in store
 		String sql = "select * from store";
 
 		myStmt = myConn.createStatement();
-
+		
+		//execute query 
 		myRs = myStmt.executeQuery(sql);
-
+		
 		ArrayList<Store> stores = new ArrayList<Store>();
 
 		// process result set
@@ -52,11 +57,13 @@ public class DAO {
 			s.setFounded(myRs.getString("founded"));
 			stores.add(s);
 		}
-
+		
+		//return the results
 		return stores;
 
 	}
 
+	//ArrayList to store the products
 	public ArrayList<Product> loadProducts() throws Exception {
 
 		Connection myConn = null;
@@ -65,10 +72,12 @@ public class DAO {
 
 		myConn = mysqlDS.getConnection();
 
+		//query to output everything in product
 		String sql = "select * from product";
 
 		myStmt = myConn.createStatement();
 
+		//execute query 
 		myRs = myStmt.executeQuery(sql);
 
 		ArrayList<Product> products = new ArrayList<Product>();
@@ -83,10 +92,12 @@ public class DAO {
 			products.add(p);
 		}
 
+		// return result set
 		return products;
 
 	}
 	
+	//ArrayList to store the shop products
 	public ArrayList<StoreProducts> loadStoreProducts(int sid) throws Exception {
 
 		Connection myConn = null;
@@ -94,6 +105,7 @@ public class DAO {
 		ResultSet myRs = null;
 
 		myConn = mysqlDS.getConnection();
+		//statement to print everything from store and product depending on store id
 		String sql = "select s.*, p.pid, p.prodname, p.price from store as s left join product as p on p.sid=s.id where id = " + sid;
 		myStmt = myConn.createStatement();
 		myRs = myStmt.executeQuery(sql);
@@ -111,11 +123,13 @@ public class DAO {
 			sp.setPrice(myRs.getDouble("price"));
 			storeProducts.add(sp);
 		}
-
+		
+		//return the result
 		return storeProducts;
 
 	}
 	
+	//Add a store
 	public void addStore(Store s) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -130,6 +144,7 @@ public class DAO {
 		myStmt.execute();			
 	}
 
+	//Delete a store
 	public void delete(int sid) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -142,6 +157,7 @@ public class DAO {
 		myStmt.execute();			
 	}
 
+	//Show all products
 	public void showProducts(int sid) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -153,7 +169,8 @@ public class DAO {
 		myStmt.setInt(1, sid);
 		myStmt.execute();			
 	}
-
+	
+	//Delete a Product
 	public void deleteProduct(int pid) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;

@@ -7,15 +7,18 @@
     <title>Add Store</title>
   </h:head>
   
+  <!-- Import the css library and class -->
+  
   <h:outputStylesheet library="css" name="tables.css"/>
   <h:outputStylesheet library="css" name="styles.css"/>
   
   <h:body>
   
+  <!-- Message for error handling -->
   <h:messages globalOnly="true" class="error"/>
   
      <h:form>
-     
+      <!-- Take in the information -->
   	  Store Name: <h:inputText id="name" value="#{store.name}" p:placeholder="Enter Store Name" required="true" requiredMessage="Error: Store Name is Mandatory"/>
       <br/>
        <h:message for="name" class="error"/>
@@ -24,6 +27,7 @@
    	  <br/>
    	  <h:message for="founded" class="error"/>
    	  <br/>
+   	  <!-- Add it the mysql using storeController -->
 	  <h:commandButton value="Add" action="#{storeController.addStore(store)}"/>
    </h:form>
   </h:body>

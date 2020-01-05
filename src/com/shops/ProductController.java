@@ -16,9 +16,11 @@ import com.shops.Product;
 @ManagedBean @SessionScoped
 public class ProductController {
 	
+	//variables
 	DAO dao;
 	ArrayList<Product> products;
 	
+	//constructor
 	public ProductController() {
 		super();
 		System.out.println("In Product Controller!");
@@ -35,10 +37,7 @@ public class ProductController {
 		return products;
 	}
 
-	public void setProducts(ArrayList<Product> products) {
-		this.products = products;
-	}
-
+	//Load the products
 	public String loadProducts() {
 		
 		System.out.println("In LoadProduct");
@@ -54,6 +53,7 @@ public class ProductController {
 		
 	}
 	
+	//Delete a product
 	public void delete(int pid) {
 		
 		System.out.println(pid);

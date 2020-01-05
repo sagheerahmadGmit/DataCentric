@@ -12,20 +12,24 @@
       listener="#{headOfficeController.loadOffices()}"/>
   </f:metadata>
   
+  <!-- Import css classes -->
   <h:outputStylesheet library="css" name="tables.css"/>
   <h:outputStylesheet library="css" name="styles.css"/>
   
   <h:body>
   	<h3>Manage Stores</h3>
   	
+  	<!-- Print out error messages -->
   	<h:messages globalOnly="true" class="error"/>
   	
   	<h:form>
-  	
+  		
+  		<!-- Add a new head office -->
   		<h:commandButton value="Add Head Office" action="addOffice" class="addbutton"/>
   		
   		<br/>
-  	
+  		
+  		<!-- Print out a table and use css to format it -->
 	  	<h:dataTable value="#{headOfficeController.offices}" var="ho"
 	  	 headerClass="table-header"
 	  	 class="labelId"
@@ -43,6 +47,7 @@
 		
 		</h:dataTable>
 		
+		<!-- Go back to home page -->
 		<h:commandLink value="Home Page" action="index"/>
 		
   	</h:form>

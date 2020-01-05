@@ -29,6 +29,7 @@ public class MongoDAO {
 		collection = database.getCollection(mongoCollection);
 	}
 	
+	//Load the Head Offices
 	public ArrayList<HeadOffices> loadOffices() throws Exception{
 
 		ArrayList<HeadOffices> headList = new ArrayList<HeadOffices>();
@@ -45,6 +46,7 @@ public class MongoDAO {
 		return headList;
 	}
 	
+	//Add an office to the Mongo Db
 	public void addOffices(HeadOffices headOffice) {
 		Document doc = new Document(); // the document that will be added.
 		doc.append("_id", headOffice.getStoreId());

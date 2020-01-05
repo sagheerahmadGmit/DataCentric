@@ -12,14 +12,19 @@
       listener="#{storeProductController.loadStoreProduct()}"/>
   </f:metadata>
   
+  <!-- import css classes -->
   <h:outputStylesheet library="css" name="tables.css"/>
+  <h:outputStylesheet library="css" name="styles.css"/>
   
   <h:body>
   	<h3>Stores/Product Details</h3>
   	
-  	<h:messages globalOnly="true"/>
+  	<!-- Message for error handling -->
+  	<h:messages globalOnly="true" class="error"/>
   	
   	<h:form>
+  	
+  		<!-- Print out a table and use css to format it and print out the following details -->
 	  	<h:dataTable value="#{storeProductController.storeProducts}" var="p"
 	  	 headerClass="table-header"
 		 rowClasses="table-odd-row,table-even-row">
@@ -56,7 +61,8 @@
 		
 		</h:dataTable>
 		
-		 <h:commandLink value="Home Page" action="index"/>
+		<!-- Go back to home page -->
+		 <h:commandLink value="Go back" action="list_stores"/>
 		
   	</h:form>
   </h:body>

@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class StoreProducts {
 	
+	//variables
 	int storeId;
 	String storeName;
 	String founded;
@@ -12,6 +13,7 @@ public class StoreProducts {
 	String prodName;
 	double price;
 
+	//getters and setters
 	public int getStoreId() {
 		return storeId;
 	}
